@@ -24,10 +24,6 @@ type LetStatement struct {
 
 func (ls *LetStatement) statementNode() {}
 func (ls *LetStatement) TokenLiteral() string {
-	// FIXME: nil
-	// if ls == nil {
-	// 	fmt.Println("ls is <nil>")
-	// }
 	return ls.Token.Literal
 }
 
