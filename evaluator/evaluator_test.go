@@ -39,8 +39,9 @@ func testEval(input string) object.Object {
 	l := lexer.New(input)
 	p := parser.New(l)
 	program := p.ParseProgram()
+	env := object.NewEnvironment()
 
-	return Eval(program)
+	return Eval(program, env)
 }
 
 func testIntegerObject(t *testing.T, obj object.Object, expected int64) bool {
@@ -158,11 +159,11 @@ func TestReturnStatements(t *testing.T) {
 		{
 			`
 if (10 > 1) {
-	if (10 > 1) {
-		return 10;
-	}
+  if (10 > 1) {
+    return 10;
+  }
 
-	return 1;
+  return 1;
 }
 `,
 			10,
@@ -211,10 +212,10 @@ func TestErrorHandling(t *testing.T) {
 		{
 			`
 if (10 > 1) {
-	if (10 > 1) {
-		return true + false;
-	}
-	return 1;
+  if (10 > 1) {
+    return true + false;
+  }
+  return 1;
 }
 `,
 			"unknown operator: BOOLEAN + BOOLEAN",
