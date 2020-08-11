@@ -351,6 +351,9 @@ func TestBuiltInFunctions(t *testing.T) {
 		{`first([0, 1, 2])`, 0},
 		{`last([])`, NULL},
 		{`last([0, 1, 2])`, 2},
+		{`rest([])`, NULL},
+		{`rest([0])`, []int64{}},
+		{`rest([0, 1, 2])`, []int64{1, 2}},
 		{`len(1)`, "argument to `len` not supported, got INTEGER"},
 		{`len("one", "two")`, "wrong number of arguments. got=2, want=1"},
 	}
