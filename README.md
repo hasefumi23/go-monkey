@@ -19,4 +19,7 @@ parser_test.go:318: expected="add((a * (b[2])), (b[1]), (2 * ([1, 2][1])))", got
 
 ```go
 {"name": "Monkey", "age": 0, "type": "Language", "status": "awesome"}
+let people = [{"name": "Alice", "age": 24}, {"name": "Anna", "age": 28}];
+people[0]["name"]
+people[0]["age"] + people[1]["age"]
 ```
